@@ -6,8 +6,8 @@
       <span v-for="area in coach.areas" :key="area">{{ area }}</span>
     </div>
     <div class="actions">
-      <router-link :to="coachContactLink">Contact</router-link>
-      <router-link :to="coachDetailsLink">View details</router-link>
+      <base-button mode="outline" link="true" :to="coachContactLink">Contact</base-button>
+      <base-button link="true" :to="coachDetailsLink">View details</base-button>
     </div>
   </li>
 </template>
