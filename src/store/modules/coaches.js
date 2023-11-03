@@ -26,7 +26,6 @@ export default {
   },
   getters: {
     getCoaches(state) {
-      console.log(state.coaches);
       return state.coaches;
     },
     hasCoaches(state) {
