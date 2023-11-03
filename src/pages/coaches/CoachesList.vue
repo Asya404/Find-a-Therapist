@@ -31,11 +31,7 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue';
 export default {
   data() {
     return {
-      activeFilters: {
-        frontend: true,
-        backend: true,
-        career: true,
-      },
+      activeFilters: {},
     };
   },
   components: { CoachItem, CoachFilter },
@@ -53,8 +49,6 @@ export default {
           return false;
         }
       });
-
-      console.log(coaches);
       return coaches;
     },
 
@@ -64,10 +58,7 @@ export default {
   },
   methods: {
     changeFilter(updatedFilters) {
-      this.activeFilters = {
-        ...this.activeFilters,
-        ...updatedFilters,
-      };
+      this.activeFilters = updatedFilters;
     },
   },
 };
