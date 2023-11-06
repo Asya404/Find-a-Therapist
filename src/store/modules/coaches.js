@@ -32,4 +32,23 @@ export default {
       return state.coaches.length > 0;
     },
   },
+  mutations: {
+    registerCoach(state, payload) {
+      state.coaches.push(payload);
+    },
+  },
+  actions: {
+    registerCoachAction(context, data) {
+      const coachData = {
+        id: new Date().toISOString,
+        firstName: data.first,
+        lastName: data.last,
+        description: data.desc,
+        hourlyRate: data.rate,
+        areas: data.areas,
+      };
+
+      context.commit('registerCoach', coachData);
+    },
+  },
 };

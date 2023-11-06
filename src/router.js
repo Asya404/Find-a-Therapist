@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import CoachDetail from './pages/coaches/CoachDetail.vue';
 import CoachesList from './pages/coaches/CoachesList.vue';
-import CoachRegistration from './pages/coaches/CoachRegistration.vue';
+import CoachForm from './pages/coaches/CoachForm.vue';
 import ContactCoach from './pages/requests/ContactCoach.vue';
 import Requests from './pages/requests/Requests.vue';
 import NotFound from './pages/NotFound.vue';
@@ -18,7 +18,7 @@ const router = createRouter({
       props: true,
       children: [{ path: 'contact', component: ContactCoach }],
     },
-    { path: '/register', component: CoachRegistration },
+    { path: '/register', component: CoachForm },
     { path: '/requests', component: Requests },
     { path: '/:notFound(.*)', component: NotFound },
   ],
