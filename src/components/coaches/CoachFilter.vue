@@ -21,7 +21,7 @@ export default {
   emits: ['change-filter'],
   data() {
     return {
-      activeFilters: {
+      allFilters: {
         frontend: true,
         backend: true,
         career: true,
@@ -33,11 +33,11 @@ export default {
       const inputId = event.target.id;
       const isActive = event.target.checked;
 
-      this.activeFilters = {
-        ...this.activeFilters,
+      this.allFilters = {
+        ...this.allFilters,
         [inputId]: isActive,
       };
-      this.$emit('change-filter', this.activeFilters);
+      this.$emit('change-filter', this.allFilters);
     },
   },
 };
