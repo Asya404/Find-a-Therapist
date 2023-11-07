@@ -31,6 +31,11 @@ export default {
     hasCoaches(state) {
       return state.coaches.length > 0;
     },
+    isCoach(_, getters, _2, rootGetters) {
+      const coaches = getters.coaches;
+      const userId = rootGetters.userId;
+      return coaches.some((coach) => coach.id === userId);
+    },
   },
   mutations: {
     registerCoach(state, payload) {
@@ -40,7 +45,7 @@ export default {
   actions: {
     registerCoachAction(context, data) {
       const coachData = {
-        id: new Date().toISOString,
+        id: context.rootGetters.userId,
         firstName: data.first,
         lastName: data.last,
         description: data.desc,
