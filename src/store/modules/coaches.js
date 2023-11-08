@@ -32,7 +32,7 @@ export default {
       return state.coaches.length > 0;
     },
     isCoach(_, getters, _2, rootGetters) {
-      const coaches = getters.coaches;
+      const coaches = getters.getCoaches;
       const userId = rootGetters.userId;
       return coaches.some((coach) => coach.id === userId);
     },
