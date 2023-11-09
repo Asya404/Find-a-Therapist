@@ -156,11 +156,11 @@ export default {
       }
 
       const formData = {
-        first: this.firstName,
-        last: this.lastName,
+        first: this.firstName.val,
+        last: this.lastName.val,
         desc: this.description,
-        rate: this.rate,
-        areas: this.areas,
+        rate: this.rate.val,
+        areas: this.areas.val,
       };
 
       this.$store.dispatch('coaches/registerCoachAction', formData);
