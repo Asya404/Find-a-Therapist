@@ -43,9 +43,10 @@ export default {
     },
   },
   actions: {
-    registerCoachAction(context, data) {
+    async registerCoachAction(context, data) {
+      const userId = context.rootGetters.userId;
+
       const coachData = {
-        id: context.rootGetters.userId,
         firstName: data.first,
         lastName: data.last,
         description: data.desc,
@@ -53,7 +54,22 @@ export default {
         areas: data.areas,
       };
 
-      context.commit('registerCoach', coachData);
+      const response = await fetch(
+        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
+        {
+          method: 'PUT',
+          body: JSON.stringify(coachData),
+        }
+      );
+
+      if (!response.ok) {
+        // error
+      }
+
+      context.commit('registerCoach', {
+        ...coachData,
+        id: userId,
+      });
     },
   },
 };

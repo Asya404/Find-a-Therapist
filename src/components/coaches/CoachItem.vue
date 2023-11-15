@@ -17,7 +17,7 @@ export default {
   props: ['coach'],
   computed: {
     fullName() {
-      return this.coach.firstName + '' + this.coach.lastName;
+      return this.coach.firstName + ' ' + this.coach.lastName;
     },
     coachContactLink() {
       return this.$route.path + '/' + this.coach.id + '/contact';
