@@ -8,8 +8,10 @@
   <section>
     <base-card>
       <div class="controls">
-        <base-button mode="outline">Refresh</base-button>
-        <base-button v-if="!isCoach" link="true" to="/register">Register as Coach</base-button>
+        <base-button mode="outline" @click="loadCoaches">Refresh</base-button>
+        <base-button v-if="!isCoach" link="true" to="/register"
+          >Register as Coach</base-button
+        >
       </div>
       <ul v-if="hasCoaches">
         <coach-item
@@ -58,12 +60,18 @@ export default {
 
     ...mapGetters({
       hasCoaches: 'coaches/hasCoaches',
-      isCoach: 'coaches/isCoach'
+      isCoach: 'coaches/isCoach',
     }),
+  },
+  created() {
+    this.loadCoaches();
   },
   methods: {
     changeFilter(updatedFilters) {
       this.activeFilters = updatedFilters;
+    },
+    loadCoaches() {
+      this.$store.dispatch('coaches/loadCoaches');
     },
   },
 };
