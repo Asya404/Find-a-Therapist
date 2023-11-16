@@ -9,11 +9,14 @@
     <base-card>
       <div class="controls">
         <base-button mode="outline" @click="loadCoaches">Refresh</base-button>
-        <base-button v-if="!isCoach" link="true" to="/register"
+        <base-button v-if="!isCoach && !isLoading" link="true" to="/register"
           >Register as Coach</base-button
         >
       </div>
-      <ul v-if="hasCoaches">
+      <div v-if="isLoading">
+        <base-spinner></base-spinner>
+      </div>
+      <ul v-else-if="hasCoaches && !isLoading">
         <coach-item
           v-for="coach in getCoaches"
           :key="coach.id"
@@ -33,6 +36,7 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue';
 export default {
   data() {
     return {
+      isLoading: false,
       activeFilters: {
         frontend: true,
         backend: true,
@@ -70,8 +74,10 @@ export default {
     changeFilter(updatedFilters) {
       this.activeFilters = updatedFilters;
     },
-    loadCoaches() {
-      this.$store.dispatch('coaches/loadCoaches');
+    async loadCoaches() {
+      this.isLoading = true;
+      await this.$store.dispatch('coaches/loadCoaches');
+      this.isLoading = false;
     },
   },
 };
