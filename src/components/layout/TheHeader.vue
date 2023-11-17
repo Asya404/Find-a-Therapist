@@ -1,9 +1,9 @@
 <template>
   <header>
     <nav>
-      <h1><router-link to="/">Find a Coach</router-link></h1>
+      <h1><router-link to="/">Find a Mental Health Therapist</router-link></h1>
       <ul>
-        <li><router-link to="/coaches">All Coaches</router-link></li>
+        <li><router-link to="/coaches">All therapists</router-link></li>
         <li><router-link to="/requests">Requests</router-link></li>
       </ul>
     </nav>
@@ -14,33 +14,29 @@
 header {
   width: 100%;
   height: 5rem;
-  background-color: #3d008d;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 header a {
+  color: #1d191f;
   text-decoration: none;
-  color: #f391e3;
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  border: 1px solid transparent;
+  border: 1px solid #1d191f;
+  border-radius: 8px;
 }
 
 a:active,
 a:hover,
 a.router-link-active {
-  border: 1px solid #f391e3;
+  background-color: #fff86d;
+  border: 1px solid transparent;
 }
 
 h1 {
-  margin: 0;
-}
-
-h1 a {
-  color: white;
-  margin: 0;
+  font-size: 16px;
 }
 
 h1 a:hover,

@@ -1,5 +1,14 @@
 <template>
   <section>
+    <section class="animation">
+      <lottie-player
+        autoplay
+        loop
+        mode="normal"
+        src="https://lottie.host/047ab9c6-c069-4e50-bed2-e689583def1e/PiOCQ4XPYy.json"
+        style="width: 320px; margin: 0 auto;"
+      ></lottie-player>
+    </section>
     <coach-filter
       @change-filter="changeFilter"
       :active-filters="activeFilters"
@@ -29,6 +38,7 @@
 </template>
 
 <script>
+import "@lottiefiles/lottie-player";
 import { mapGetters } from 'vuex';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import CoachFilter from '../../components/coaches/CoachFilter.vue';
@@ -38,9 +48,10 @@ export default {
     return {
       isLoading: false,
       activeFilters: {
-        frontend: true,
-        backend: true,
-        career: true,
+        psychoanalysis: true,
+        behavior: true,
+        cognitive: true,
+        humanistic: true,
       },
     };
   },
@@ -48,11 +59,14 @@ export default {
   computed: {
     getCoaches() {
       let coaches = this.$store.getters['coaches/getCoaches'];
+      console.log(coaches);
       coaches = coaches.filter((coach) => {
         if (
-          (this.activeFilters.frontend && coach.areas.includes('frontend')) ||
-          (this.activeFilters.backend && coach.areas.includes('backend')) ||
-          (this.activeFilters.career && coach.areas.includes('career'))
+          (this.activeFilters.psychoanalysis &&
+            coach.areas.includes('psychoanalysis')) ||
+          (this.activeFilters.behavior && coach.areas.includes('behavior')) ||
+          (this.activeFilters.cognitive && coach.areas.includes('cognitive')) ||
+          (this.activeFilters.humanistic && coach.areas.includes('humanistic'))
         ) {
           return true;
         } else {

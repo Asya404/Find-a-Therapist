@@ -32,7 +32,7 @@ export default {
 <style scoped>
 li {
   margin: 1rem 0;
-  border: 1px solid #424242;
+  background-color: #fff;
   border-radius: 12px;
   padding: 1rem;
 }

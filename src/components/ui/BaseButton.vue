@@ -19,42 +19,33 @@ export default {
 <style scoped>
 button,
 a {
+  color: #1d191f;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  font: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
-  color: white;
+  background-color: #fff86d;
   cursor: pointer;
-  border-radius: 30px;
+  border-radius: 8px;
   margin-right: 0.5rem;
   display: inline-block;
-}
-
-a:hover,
-a:active,
-button:hover,
-button:active {
-  background-color: #270041;
-  border-color: #270041;
+  font-weight: 700;
+  border: none;
 }
 
 .flat {
   background-color: transparent;
-  color: #3a0061;
   border: none;
 }
 
 .outline {
   background-color: transparent;
-  border-color: #270041;
-  color: #270041;
+  border: 1px solid #1d191f;
 }
 
 .flat:hover,
 .flat:active,
 .outline:hover,
 .outline:active {
-  background-color: #edd2ff;
+  background-color: #fff86d;
+  border: 1px solid transparent;
 }
 </style>

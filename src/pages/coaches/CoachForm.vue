@@ -53,36 +53,47 @@
         </div>
         <div class="form-control" :class="{ invalid: !areas.isValid }">
           <h3>Areas of Expertise</h3>
-          <div>
+          <div class="areas-option">
             <input
               type="checkbox"
-              id="frontend"
-              value="frontend"
+              id="psychoanalysis"
+              value="psychoanalysis"
               v-model="areas.val"
               @blur="clearValidity('areas')"
             />
-            <label for="frontend">Frontend Development</label>
+            <label for="psychoanalysis">Psychoanalysis therapy</label>
           </div>
-          <div>
+          <div class="areas-option">
             <input
               type="checkbox"
-              id="backend"
-              value="backend"
+              id="behavior"
+              value="behavior"
               v-model="areas.val"
               @blur="clearValidity('areas')"
             />
-            <label for="backend">Backend Development</label>
+            <label for="behavior">Behavior therapy</label>
           </div>
-          <div>
+          <div class="areas-option">
             <input
               type="checkbox"
-              id="career"
-              value="career"
+              id="cognitive"
+              value="cognitive"
               v-model="areas.val"
               @blur="clearValidity('areas')"
             />
-            <label for="career">Career Advisory</label>
+            <label for="cognitive">Cognitive therapy</label>
           </div>
+          <div class="areas-option">
+            <input
+              type="checkbox"
+              id="humanistic"
+              value="humanistic"
+              v-model="areas.val"
+              @blur="clearValidity('areas')"
+            />
+            <label for="humanistic">Humanistic therapy</label>
+          </div>
+
           <p class="message" v-if="!areas.isValid">
             At least one expertise must be selected
           </p>
@@ -175,7 +186,7 @@ export default {
   margin: 0.5rem 0;
 }
 
-label {
+.form-control label {
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
@@ -184,7 +195,6 @@ label {
 input[type='checkbox'] + label {
   font-weight: normal;
   display: inline;
-  margin: 0 0 0 0.5rem;
 }
 
 input,
@@ -215,6 +225,17 @@ input[type='checkbox']:focus {
 h3 {
   margin: 0.5rem 0;
   font-size: 1rem;
+}
+
+.areas-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.areas-option label {
+  margin: 0;
 }
 
 .message {
