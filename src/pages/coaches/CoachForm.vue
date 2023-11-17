@@ -53,45 +53,47 @@
         </div>
         <div class="form-control" :class="{ invalid: !areas.isValid }">
           <h3>Areas of Expertise</h3>
-          <div class="areas-option">
-            <input
-              type="checkbox"
-              id="psychoanalysis"
-              value="psychoanalysis"
-              v-model="areas.val"
-              @blur="clearValidity('areas')"
-            />
-            <label for="psychoanalysis">Psychoanalysis therapy</label>
-          </div>
-          <div class="areas-option">
-            <input
-              type="checkbox"
-              id="behavior"
-              value="behavior"
-              v-model="areas.val"
-              @blur="clearValidity('areas')"
-            />
-            <label for="behavior">Behavior therapy</label>
-          </div>
-          <div class="areas-option">
-            <input
-              type="checkbox"
-              id="cognitive"
-              value="cognitive"
-              v-model="areas.val"
-              @blur="clearValidity('areas')"
-            />
-            <label for="cognitive">Cognitive therapy</label>
-          </div>
-          <div class="areas-option">
-            <input
-              type="checkbox"
-              id="humanistic"
-              value="humanistic"
-              v-model="areas.val"
-              @blur="clearValidity('areas')"
-            />
-            <label for="humanistic">Humanistic therapy</label>
+          <div class="areas-options">
+            <div class="areas-option">
+              <input
+                type="checkbox"
+                id="psychoanalysis"
+                value="psychoanalysis"
+                v-model="areas.val"
+                @blur="clearValidity('areas')"
+              />
+              <label for="psychoanalysis">Psychoanalysis therapy</label>
+            </div>
+            <div class="areas-option">
+              <input
+                type="checkbox"
+                id="behavior"
+                value="behavior"
+                v-model="areas.val"
+                @blur="clearValidity('areas')"
+              />
+              <label for="behavior">Behavior therapy</label>
+            </div>
+            <div class="areas-option">
+              <input
+                type="checkbox"
+                id="cognitive"
+                value="cognitive"
+                v-model="areas.val"
+                @blur="clearValidity('areas')"
+              />
+              <label for="cognitive">Cognitive therapy</label>
+            </div>
+            <div class="areas-option">
+              <input
+                type="checkbox"
+                id="humanistic"
+                value="humanistic"
+                v-model="areas.val"
+                @blur="clearValidity('areas')"
+              />
+              <label for="humanistic">Humanistic therapy</label>
+            </div>
           </div>
 
           <p class="message" v-if="!areas.isValid">
@@ -186,56 +188,27 @@ export default {
   margin: 0.5rem 0;
 }
 
-.form-control label {
+.form-control label,
+h3 {
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
-}
-
-input[type='checkbox'] + label {
-  font-weight: normal;
-  display: inline;
 }
 
 input,
 textarea {
   display: block;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
   font: inherit;
 }
 
 input:focus,
 textarea:focus {
-  background-color: #f0e6fd;
   outline: none;
-  border-color: #3d008d;
-}
-
-input[type='checkbox'] {
-  display: inline;
-  width: auto;
-  border: none;
-}
-
-input[type='checkbox']:focus {
-  outline: #3d008d solid 1px;
-}
-
-h3 {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-}
-
-.areas-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.areas-option label {
-  margin: 0;
+  border-color: #fff86d;
 }
 
 .message {

@@ -39,6 +39,10 @@ h1 {
   font-size: 16px;
 }
 
+h1 a {
+  border: none;
+}
+
 h1 a:hover,
 h1 a:active,
 h1 a.router-link-active {

@@ -18,12 +18,6 @@ export default {
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-*:focus {
-  outline: none;
 }
 
 html {
@@ -37,13 +31,32 @@ body {
   font-size: 14px;
 }
 
-input[type='checkbox'] {
+.areas-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 10px;
+}
+
+.areas-option {
+  width: calc((100% / 2) - ((1 / 2) * 10px));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6d6d6d;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.areas-option label {
   margin: 0;
-  padding: 0;
+  color: #6d6d6d;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.areas-option input[type='checkbox'] {
   background: none;
   border: none;
-  border-radius: 0;
-  outline: none;
   appearance: none;
   position: relative;
   width: 23px;
@@ -51,7 +64,7 @@ input[type='checkbox'] {
   cursor: pointer;
 }
 
-input[type='checkbox']::before {
+.areas-option input[type='checkbox']::before {
   content: '';
   position: absolute;
   top: 0;
@@ -62,7 +75,7 @@ input[type='checkbox']::before {
   border-radius: 5px;
 }
 
-input[type='checkbox']::after {
+.areas-option input[type='checkbox']::after {
   content: '';
   position: absolute;
   width: 11px;
@@ -76,12 +89,7 @@ input[type='checkbox']::after {
   opacity: 0;
 }
 
-input[type='checkbox']:focus {
-  outline: none;
-}
-
-input[type='checkbox']:checked::after {
+.areas-option input[type='checkbox']:checked::after {
   opacity: 1;
-  outline: none;
 }
 </style>
