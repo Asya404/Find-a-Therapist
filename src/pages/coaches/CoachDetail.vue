@@ -1,8 +1,20 @@
 <template>
   <section>
     <base-card>
-      <h2>{{ fullName }}</h2>
-      <h3>${{ rate }}/hour</h3>
+      <div class="img-wrapper">
+        <img class="coach__img" src="../../assets/imagefile.webp" alt="" />
+      </div>
+      <div class="wrapper">
+        <h2>{{ fullName }}</h2>
+        <h3>${{ rate }}/hour</h3>
+      </div>
+      <base-badge
+        v-for="area in areas"
+        :key="area"
+        :type="area"
+        :text="area"
+      ></base-badge>
+      <p>{{ description }}</p>
     </base-card>
   </section>
   <section>
@@ -12,17 +24,6 @@
         <base-button link="true" :to="contactLink">Contact</base-button>
       </header>
       <router-view></router-view>
-    </base-card>
-  </section>
-  <section>
-    <base-card>
-      <base-badge
-        v-for="area in areas"
-        :key="area"
-        :type="area"
-        :text="area"
-      ></base-badge>
-      <p>{{ description }}</p>
     </base-card>
   </section>
 </template>
@@ -37,7 +38,7 @@ export default {
   },
   computed: {
     fullName() {
-      return this.selectedCoach.firstName + '' + this.selectedCoach.lastName;
+      return this.selectedCoach.firstName + ' ' + this.selectedCoach.lastName;
     },
     areas() {
       return this.selectedCoach.areas;
@@ -50,7 +51,7 @@ export default {
       return this.selectedCoach.description;
     },
     contactLink() {
-      return this.$route.path + '/' + this.id + '/contact';
+      return this.$route.path + '/contact';
     },
   },
   created() {
@@ -60,3 +61,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.img-wrapper {
+  text-align: center;
+}
+
+.coach__img {
+  max-width: 90px;
+  margin: 0 auto;
+}
+</style>
