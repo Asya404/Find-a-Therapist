@@ -6,7 +6,7 @@
         loop
         mode="normal"
         src="https://lottie.host/047ab9c6-c069-4e50-bed2-e689583def1e/PiOCQ4XPYy.json"
-        style="width: 320px; margin: 0 auto;"
+        style="width: 320px; margin: 0 auto"
       ></lottie-player>
     </section>
     <coach-filter
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import "@lottiefiles/lottie-player";
+import '@lottiefiles/lottie-player';
 import { mapGetters } from 'vuex';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import CoachFilter from '../../components/coaches/CoachFilter.vue';
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      error: null,
       activeFilters: {
         psychoanalysis: true,
         behavior: true,
@@ -90,7 +91,11 @@ export default {
     },
     async loadCoaches() {
       this.isLoading = true;
-      await this.$store.dispatch('coaches/loadCoaches');
+      try {
+        await this.$store.dispatch('coaches/loadCoaches');
+      } catch (error) {
+        this.error = error.message || 'Something went wrong';
+      }
       this.isLoading = false;
     },
   },
