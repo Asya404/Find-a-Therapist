@@ -17,6 +17,37 @@
   </form>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      request: {
+        coachId: this.$route.params.id,
+        email: '',
+        message: '',
+        formIsValid: true,
+      },
+    };
+  },
+  methods: {
+    submitForm() {
+      this.request.formIsValid = true;
+
+      if (
+        this.request.email === '' ||
+        !this.request.email.includes('@') ||
+        this.request.message === ''
+      ) {
+        this.request.formIsValid = false;
+        return;
+      }
+      this.$store.dispatch('requests/contactCoach', this.request);
+      this.$router.replace('/coaches');
+    },
+  },
+};
+</script>
+
 <style scoped>
 form {
   margin: 1rem;
@@ -60,34 +91,3 @@ textarea:focus {
   text-align: center;
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      request: {
-        coachId: this.$route.params.id,
-        email: '',
-        message: '',
-        formIsValid: true,
-      },
-    };
-  },
-  methods: {
-    submitForm() {
-      this.request.formIsValid = true;
-
-      if (
-        this.request.email === '' ||
-        !this.request.email.includes('@') ||
-        this.request.message === ''
-      ) {
-        this.request.formIsValid = false;
-        return;
-      }
-      this.$store.dispatch('requests/contactCoach', this.request);
-      this.$router.replace('/coaches');
-    },
-  },
-};
-</script>
