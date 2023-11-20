@@ -101,7 +101,7 @@
           </p>
         </div>
         <p class="message" v-if="!formIsValid">Please fix the above errors</p>
-        <base-button>Register</base-button>
+        <base-button mode="fill">Register</base-button>
       </form>
     </base-card>
   </section>

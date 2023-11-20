@@ -22,7 +22,7 @@ a {
   color: #1d191f;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  background-color: #fff86d;
+  
   cursor: pointer;
   border-radius: 8px;
   margin-right: 0.5rem;
@@ -31,8 +31,8 @@ a {
   border: none;
 }
 
-.flat {
-  background-color: transparent;
+.fill {
+  background-color: #fff86d;
   border: none;
 }
 
@@ -41,8 +41,6 @@ a {
   border: 1px solid #1d191f;
 }
 
-.flat:hover,
-.flat:active,
 .outline:hover,
 .outline:active {
   background-color: #fff86d;

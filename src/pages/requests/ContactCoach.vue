@@ -12,7 +12,7 @@
       Please enter a valid email and non-empty message.
     </p>
     <div class="actions">
-      <base-button>Send message</base-button>
+      <base-button mode="fill">Send message</base-button>
     </div>
   </form>
 </template>

@@ -19,7 +19,7 @@
       <base-button mode="outline" link="true" :to="coachContactLink"
         >Contact</base-button
       >
-      <base-button link="true" :to="coachDetailsLink">View details</base-button>
+      <base-button mode="fill" link="true" :to="coachDetailsLink">View details</base-button>
     </div>
   </li>
 </template>

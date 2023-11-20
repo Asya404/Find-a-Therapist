@@ -3,8 +3,8 @@
     <nav>
       <h1><router-link to="/">Find a Mental Health Therapist</router-link></h1>
       <ul>
-        <li><router-link to="/coaches">All therapists</router-link></li>
-        <li><router-link to="/requests">Requests</router-link></li>
+        <li><router-link class="header__link" to="/coaches">All therapists</router-link></li>
+        <li><router-link class="header__link" to="/requests">Requests</router-link></li>
       </ul>
     </nav>
   </header>
@@ -28,9 +28,9 @@ header a {
   border-radius: 8px;
 }
 
-a:active,
-a:hover,
-a.router-link-active {
+.header__link:active,
+.header__link:hover,
+.header__link.router-link-active {
   background-color: #fff86d;
   border: 1px solid transparent;
 }

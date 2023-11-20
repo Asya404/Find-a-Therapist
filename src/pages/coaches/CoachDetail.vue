@@ -21,7 +21,7 @@
     <base-card>
       <header>
         <h2>Interested? Reach out now!</h2>
-        <base-button link="true" :to="contactLink">Contact</base-button>
+        <base-button mode="fill" link="true" :to="contactLink">Contact</base-button>
       </header>
       <router-view></router-view>
     </base-card>
