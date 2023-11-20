@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
   <section>
     <section class="animation">
       <lottie-player
@@ -97,6 +100,9 @@ export default {
         this.error = error.message || 'Something went wrong';
       }
       this.isLoading = false;
+    },
+    handleError() {
+      this.error = null;
     },
   },
 };
