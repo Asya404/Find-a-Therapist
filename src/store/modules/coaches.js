@@ -33,8 +33,6 @@ export default {
         imageUrl: data.image
       };
 
-      console.log(coachData);
-
       const response = await fetch(
         `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/coaches/${coachData.id}.json`,
         {
@@ -74,6 +72,7 @@ export default {
           description: responseData[key].description,
           hourlyRate: responseData[key].hourlyRate,
           areas: responseData[key].areas,
+          imageUrl: responseData[key].imageUrl
         };
         coaches.push(coach);
       }

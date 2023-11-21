@@ -141,7 +141,7 @@ export default {
       },
       formIsValid: true,
       image: null,
-      imageUrl: null,
+      imageUrl: '',
     };
   },
   methods: {
@@ -197,7 +197,7 @@ export default {
           image: this.imageUrl,
         };
 
-        this.$store.dispatch('coaches/registerCoachAction', formData);
+        await this.$store.dispatch('coaches/registerCoachAction', formData);
         this.$router.replace('/coaches');
       } catch (error) {
         console.error(error.message, 'Error uploading or getting the image');

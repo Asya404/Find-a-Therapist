@@ -63,7 +63,6 @@ export default {
   computed: {
     getCoaches() {
       let coaches = this.$store.getters['coaches/getCoaches'];
-      console.log(coaches);
       coaches = coaches.filter((coach) => {
         if (
           (this.activeFilters.psychoanalysis &&
