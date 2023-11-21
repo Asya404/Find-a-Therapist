@@ -10,6 +10,7 @@
   "dependencies": {
     "@lottiefiles/vue-lottie-player": "^1.1.0",
     "core-js": "^3.6.5",
+    "firebase": "^10.6.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.13",
     "vuex": "^4.0.2"

@@ -1,7 +1,7 @@
 <template>
   <li>
     <div class="coach__info">
-      <img class="coach__img" src="../../assets/imagefile.webp" alt="" />
+      <img class="coach__img" :src="coach.imageUrl" alt="" />
       <div class="wrapper">
         <h3>{{ fullName }}</h3>
         <h4>${{ coach.hourlyRate }}/hour</h4>

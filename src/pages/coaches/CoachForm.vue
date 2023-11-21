@@ -51,6 +51,11 @@
             Rate must be greater than 0
           </p>
         </div>
+
+        <div class="form-control">
+          <input type="file" @change="onFileSelected" />
+        </div>
+
         <div class="form-control" :class="{ invalid: !areas.isValid }">
           <h3>Areas of Expertise</h3>
           <div class="areas-options">
@@ -108,6 +113,9 @@
 </template>
 
 <script>
+import { storage } from '../../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 export default {
   data() {
     return {
@@ -132,9 +140,14 @@ export default {
         isValid: true,
       },
       formIsValid: true,
+      image: null,
+      imageUrl: null,
     };
   },
   methods: {
+    onFileSelected(event) {
+      this.image = event.target.files[0];
+    },
     clearValidity(input) {
       this[input].isValid = true;
     },
@@ -161,23 +174,34 @@ export default {
         this.formIsValid = false;
       }
     },
-    submitForm() {
+    async submitForm() {
       this.validateForm();
 
       if (!this.formIsValid) {
         return;
       }
 
-      const formData = {
-        first: this.firstName.val,
-        last: this.lastName.val,
-        desc: this.description.val,
-        rate: this.rate.val,
-        areas: this.areas.val,
-      };
+      try {
+        let imageRef = ref(storage, this.image.name);
+        await uploadBytes(imageRef, this.image);
 
-      this.$store.dispatch('coaches/registerCoachAction', formData);
-      this.$router.replace('/coaches');
+        const url = await getDownloadURL(imageRef);
+        this.imageUrl = url;
+
+        const formData = {
+          first: this.firstName.val,
+          last: this.lastName.val,
+          desc: this.description.val,
+          rate: this.rate.val,
+          areas: this.areas.val,
+          image: this.imageUrl,
+        };
+
+        this.$store.dispatch('coaches/registerCoachAction', formData);
+        this.$router.replace('/coaches');
+      } catch (error) {
+        console.error(error.message, 'Error uploading or getting the image');
+      }
     },
   },
 };
