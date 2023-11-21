@@ -2,7 +2,7 @@
   <section>
     <base-card>
       <div class="img-wrapper">
-        <img class="coach__img" src="../../assets/imagefile.webp" alt="" />
+        <img class="coach__img" :src="selectedCoach.imageUrl" alt="" />
       </div>
       <div class="wrapper">
         <h2>{{ fullName }}</h2>
