@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       request: {
-        coachId: this.$route.params.id,
+        id: this.$route.params.id,
         email: '',
         message: '',
         formIsValid: true,

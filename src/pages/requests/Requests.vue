@@ -11,6 +11,7 @@
       <ul v-else-if="hasRequests && !isLoading">
         <li v-for="request in receivedRequests" :key="request.id">
           <div>
+            <p class="request__name">{{ request.name }}</p>
             <a href="mailto: request.email">{{ request.userEmail }}</a>
             <p>{{ request.message }}</p>
           </div>
@@ -91,6 +92,12 @@ a:active {
 }
 
 p {
-  margin: 0.5rem 0 0 0;
+  margin: 0 0 5px 0;
+}
+
+.request__name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 </style>

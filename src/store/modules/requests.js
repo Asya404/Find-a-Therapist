@@ -16,14 +16,17 @@ export default {
   actions: {
     async contactCoach(context, payload) {
       const newRequest = {
+        id: payload.id,
         userEmail: payload.email,
         message: payload.message,
       };
 
+      console.log(newRequest);
+
       const response = await fetch(
-        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/requests/${payload.coachId}.json`,
+        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/requests/${newRequest.id}.json`,
         {
-          method: 'POST',
+          method: 'PUT',
           body: JSON.stringify(newRequest),
         }
       );
@@ -40,9 +43,8 @@ export default {
       context.commit('addRequest', newRequest);
     },
     async fetchRequest(context) {
-      const coachId = context.rootGetters.userId;
       const response = await fetch(
-        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json`
+        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/requests.json`
       );
       const responseData = await response.json();
 
@@ -55,21 +57,29 @@ export default {
 
       const requests = [];
 
+      const coaches = context.rootGetters['coaches/getCoaches'];
+      
       for (const key in responseData) {
+        const requestedCoach = coaches.find((coach) => coach.id === key);
+       
+        
         const request = {
           id: key,
-          coachId: coachId,
           userEmail: responseData[key].userEmail,
           message: responseData[key].message,
+          name: requestedCoach
+            ? `${requestedCoach.firstName} ${requestedCoach.lastName}`
+            : 'Unknown Coach',
         };
+
         requests.push(request);
       }
       context.commit('setRequests', requests);
     },
   },
   getters: {
-    requests(state, _, _2, rootGetters) {
-      return state.requests.filter((req) => req.coachId === rootGetters.userId);
+    requests(state) {
+      return state.requests;
     },
     hasRequests(_, getters) {
       return getters.requests.length > 0;

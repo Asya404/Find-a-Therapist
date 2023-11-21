@@ -12,11 +12,6 @@ export default {
     hasCoaches(state) {
       return state.coaches.length > 0;
     },
-    isCoach(_, getters, _2, rootGetters) {
-      const coaches = getters.getCoaches;
-      const userId = rootGetters.userId;
-      return coaches.some((coach) => coach.id === userId);
-    },
   },
   mutations: {
     registerCoach(state, payload) {
@@ -28,9 +23,8 @@ export default {
   },
   actions: {
     async registerCoachAction(context, data) {
-      const userId = context.rootGetters.userId;
-
       const coachData = {
+        id: 'c3' + Math.random().toFixed(3)*1000,
         firstName: data.first,
         lastName: data.last,
         description: data.desc,
@@ -42,7 +36,7 @@ export default {
       console.log(coachData);
 
       const response = await fetch(
-        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/coaches/${userId}.json`,
+        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/coaches/${coachData.id}.json`,
         {
           method: 'PUT',
           body: JSON.stringify(coachData),
@@ -58,7 +52,6 @@ export default {
 
       context.commit('registerCoach', {
         ...coachData,
-        id: userId,
       });
     },
     async loadCoaches(context) {
