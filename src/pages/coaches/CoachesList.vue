@@ -4,13 +4,13 @@
   </base-dialog>
   <section>
     <section class="animation">
-      <!-- <lottie-player
+      <lottie-player
         autoplay
         loop
         mode="normal"
         src="https://lottie.host/047ab9c6-c069-4e50-bed2-e689583def1e/PiOCQ4XPYy.json"
         style="width: 320px; margin: 0 auto"
-      ></lottie-player> -->
+      ></lottie-player>
     </section>
     <coach-filter
       @change-filter="changeFilter"
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-// import '@lottiefiles/lottie-player';
+import '@lottiefiles/lottie-player';
 import { mapGetters } from 'vuex';
 import CoachItem from '../../components/coaches/CoachItem.vue';
 import CoachFilter from '../../components/coaches/CoachFilter.vue';
