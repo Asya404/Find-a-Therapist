@@ -54,7 +54,7 @@ export default {
     },
     async loadCoaches(context) {
       const response = await fetch(
-        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/coaches.json`
+        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/coaches.jso`
       );
       const responseData = await response.json();
 
