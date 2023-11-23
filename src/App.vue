@@ -37,6 +37,10 @@ body {
   font-size: 14px;
 }
 
+h2 {
+  margin-bottom: 15px;
+}
+
 .areas-options {
   display: flex;
   flex-wrap: wrap;

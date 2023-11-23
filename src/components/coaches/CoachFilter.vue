@@ -56,10 +56,6 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  margin-bottom: 15px;
-}
-
 .form__privacy {
   display: flex;
   align-items: center;

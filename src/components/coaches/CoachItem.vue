@@ -5,7 +5,7 @@
       <div class="wrapper">
         <h3>{{ fullName }}</h3>
         <h4>${{ coach.hourlyRate }}/hour</h4>
-        <div>
+        <div class="coach__areas">
           <base-badge
             v-for="area in coach.areas"
             :key="area"
@@ -19,7 +19,9 @@
       <base-button mode="outline" link="true" :to="coachContactLink"
         >Contact</base-button
       >
-      <base-button mode="fill" link="true" :to="coachDetailsLink">View details</base-button>
+      <base-button mode="fill" link="true" :to="coachDetailsLink"
+        >View details</base-button
+      >
     </div>
   </li>
 </template>
@@ -70,6 +72,13 @@ div {
 
 .coach__img {
   max-width: 70px;
+}
+
+.coach__areas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .actions {
