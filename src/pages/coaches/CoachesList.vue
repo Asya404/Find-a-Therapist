@@ -1,43 +1,45 @@
 <template>
-  <base-dialog :show="!!error" title="An error occured!" @close="handleError">
-    <p>{{ error }}</p>
-  </base-dialog>
-  <section>
-    <section class="animation">
-      <lottie-player
-        autoplay
-        loop
-        mode="normal"
-        src="https://lottie.host/047ab9c6-c069-4e50-bed2-e689583def1e/PiOCQ4XPYy.json"
-        style="width: 320px; margin: 0 auto"
-      ></lottie-player>
+  <div>
+    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+      <p>{{ error }}</p>
+    </base-dialog>
+    <section>
+      <section class="animation">
+        <lottie-player
+          autoplay
+          loop
+          mode="normal"
+          src="https://lottie.host/047ab9c6-c069-4e50-bed2-e689583def1e/PiOCQ4XPYy.json"
+          style="width: 320px; margin: 0 auto"
+        ></lottie-player>
+      </section>
+      <coach-filter
+        @change-filter="changeFilter"
+        :active-filters="activeFilters"
+      ></coach-filter>
     </section>
-    <coach-filter
-      @change-filter="changeFilter"
-      :active-filters="activeFilters"
-    ></coach-filter>
-  </section>
-  <section>
-    <base-card>
-      <div class="controls">
-        <base-button mode="outline" @click="loadCoaches">Refresh</base-button>
-        <base-button v-if="!isLoading" link="true" to="/register" mode="fill"
-          >Register as Coach</base-button
-        >
-      </div>
-      <div v-if="isLoading">
-        <base-spinner></base-spinner>
-      </div>
-      <ul v-else-if="hasCoaches && !isLoading">
-        <coach-item
-          v-for="coach in getCoaches"
-          :key="coach.id"
-          :coach="coach"
-        ></coach-item>
-      </ul>
-      <h3 v-else>No coaches found</h3>
-    </base-card>
-  </section>
+    <section>
+      <base-card>
+        <div class="controls">
+          <base-button mode="outline" @click="loadCoaches">Refresh</base-button>
+          <base-button v-if="!isLoading" link="true" to="/register" mode="fill"
+            >Register as Therapist</base-button
+          >
+        </div>
+        <div v-if="isLoading">
+          <base-spinner></base-spinner>
+        </div>
+        <ul v-else-if="hasCoaches && !isLoading">
+          <coach-item
+            v-for="coach in getCoaches"
+            :key="coach.id"
+            :coach="coach"
+          ></coach-item>
+        </ul>
+        <h3 v-else>No coaches found</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>

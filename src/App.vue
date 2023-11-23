@@ -1,6 +1,10 @@
 <template>
   <the-header></the-header>
-  <router-view></router-view>
+  <router-view v-slot="slotProps">
+    <transition name="route-anim" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
 </template>
 
 <script>
@@ -18,6 +22,8 @@ export default {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -34,7 +40,7 @@ body {
 .areas-options {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px 10px;
+  gap: 10px;
 }
 
 .areas-option {
@@ -91,5 +97,29 @@ body {
 
 .areas-option input[type='checkbox']:checked::after {
   opacity: 1;
+}
+
+.route-anim-enter-from {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.route-anim-enter-to,
+.route-anim-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.route-anim-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.route-anim-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.route-anim-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
 }
 </style>

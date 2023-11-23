@@ -1,10 +1,18 @@
 <template>
   <header>
     <nav>
-      <h1><router-link to="/">Find a Mental Health Therapist</router-link></h1>
+      <h1><router-link to="/">Logo</router-link></h1>
       <ul>
-        <li><router-link class="header__link" to="/coaches">All therapists</router-link></li>
-        <li><router-link class="header__link" to="/requests">Requests</router-link></li>
+        <li>
+          <router-link class="header__link" to="/coaches"
+            >All therapists</router-link
+          >
+        </li>
+        <li>
+          <router-link class="header__link" to="/requests"
+            >Requests</router-link
+          >
+        </li>
       </ul>
     </nav>
   </header>
@@ -17,6 +25,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+header img {
+  max-width: 80px;
 }
 
 header a {
@@ -35,11 +47,13 @@ header a {
   border: 1px solid transparent;
 }
 
-h1 {
-  font-size: 16px;
-}
-
 h1 a {
+  font-size: 30px;
+  color: transparent;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   border: none;
 }
 

@@ -50,8 +50,8 @@ export default {
 
 <style scoped>
 form {
-  margin: 1rem;
-  border: 1px solid #ccc;
+  margin-top: 1rem;
+  background-color: #fff;
   border-radius: 12px;
   padding: 1rem;
 }

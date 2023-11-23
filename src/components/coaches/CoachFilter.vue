@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
 h2 {
-  margin: 0.5rem 0;
+  margin-bottom: 15px;
 }
 
 .form__privacy {

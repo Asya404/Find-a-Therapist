@@ -1,25 +1,29 @@
 <template>
-  <base-dialog :show="!!error" title="An error occured!" @close="handleError">
-    <p>{{ error }}</p>
-  </base-dialog>
-  <section>
-    <base-card>
-      <header>
-        <h2>Requests Received</h2>
-      </header>
-      <base-spinner v-if="isLoading"></base-spinner>
-      <ul v-else-if="hasRequests && !isLoading">
-        <li v-for="request in receivedRequests" :key="request.id">
-          <div>
-            <p class="request__name">{{ request.name }}</p>
-            <a href="mailto: request.email">{{ request.userEmail }}</a>
-            <p>{{ request.message }}</p>
-          </div>
-        </li>
-      </ul>
-      <h3 v-else>You haven't received any requests yet</h3>
-    </base-card>
-  </section>
+  <div>
+    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+      <p>{{ error }}</p>
+    </base-dialog>
+    <section>
+      <base-card>
+        <header>
+          <h2>Requests Received</h2>
+        </header>
+        <base-spinner v-if="isLoading"></base-spinner>
+        <ul v-else-if="hasRequests && !isLoading">
+          <li v-for="request in receivedRequests" :key="request.id">
+            <div>
+              <p class="request__name">to: {{ request.name }}</p>
+              <a class="request__mail" href="mailto: request.email"
+                >from: {{ request.userEmail }}</a
+              >
+              <p>{{ request.message }}</p>
+            </div>
+          </li>
+        </ul>
+        <h3 v-else>You haven't received any requests yet</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -67,7 +71,7 @@ ul {
   list-style: none;
   margin: 2rem auto;
   padding: 0;
-  max-width: 30rem;
+  max-width: 40rem;
 }
 
 h3 {
@@ -75,9 +79,10 @@ h3 {
 }
 
 li {
-  margin: 1rem 0;
-  border: 1px solid #ccc;
+  margin-bottom: 1.5rem;
+  background-color: #fff;
   padding: 1rem;
+  border-radius: 12px;
 }
 
 a {
@@ -96,8 +101,16 @@ p {
 }
 
 .request__name {
-  font-size: 18px;
+  color: #ee8013;
+  font-size: 16px !important;
   font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.request__mail {
+  font-size: 16px;
+  display: inline-block;
+  color: #000;
   margin-bottom: 10px;
 }
 </style>

@@ -1,31 +1,35 @@
 <template>
-  <section>
-    <base-card>
-      <div class="img-wrapper">
-        <img class="coach__img" :src="selectedCoach.imageUrl" alt="" />
-      </div>
-      <div class="wrapper">
-        <h2>{{ fullName }}</h2>
-        <h3>${{ rate }}/hour</h3>
-      </div>
-      <base-badge
-        v-for="area in areas"
-        :key="area"
-        :type="area"
-        :text="area"
-      ></base-badge>
-      <p>{{ description }}</p>
-    </base-card>
-  </section>
-  <section>
-    <base-card>
-      <header>
-        <h2>Interested? Reach out now!</h2>
-        <base-button mode="fill" link="true" :to="contactLink">Contact</base-button>
-      </header>
-      <router-view></router-view>
-    </base-card>
-  </section>
+  <div>
+    <section>
+      <base-card>
+        <div class="img-wrapper">
+          <img class="coach__img" :src="selectedCoach.imageUrl" alt="" />
+        </div>
+        <div class="wrapper">
+          <h2>{{ fullName }}</h2>
+          <h3>${{ rate }}/hour</h3>
+        </div>
+        <base-badge
+          v-for="area in areas"
+          :key="area"
+          :type="area"
+          :text="area"
+        ></base-badge>
+        <p>{{ description }}</p>
+      </base-card>
+    </section>
+    <section>
+      <base-card>
+        <header>
+          <h2>Interested? Reach out now!</h2>
+          <base-button mode="fill" link="true" :to="contactLink"
+            >Contact</base-button
+          >
+        </header>
+        <router-view></router-view>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -63,6 +67,10 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  text-align: center;
+}
+
 .img-wrapper {
   text-align: center;
 }
@@ -70,5 +78,9 @@ export default {
 .coach__img {
   max-width: 90px;
   margin: 0 auto;
+}
+
+.badge {
+  margin-bottom: 10px;
 }
 </style>
