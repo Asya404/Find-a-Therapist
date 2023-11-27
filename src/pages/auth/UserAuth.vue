@@ -1,19 +1,53 @@
 <template>
   <base-card>
-    <form>
+    <form @submit.prevent="submitForm">
       <div class="form-control">
         <label for="email">E-mail</label>
-        <input type="email" id="email" />
+        <input type="email" id="email" v-model.trim="email" />
       </div>
       <div class="form-control">
         <label for="email">Password</label>
-        <input type="password" id="password" />
+        <input type="password" id="password" v-model.trim="password" />
       </div>
+      <p v-if="!formIsValid" class="error">
+        Please enter a valid e-mail and password (must be at least 6 characters
+        long)
+      </p>
       <base-button mode="fill">Login</base-button>
-      <base-button type="button" mode="outline">Signup instead</base-button>
+      <base-button type="button" mode="outline" @click="switchAuthMode"
+        >Signup instead</base-button
+      >
     </form>
   </base-card>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      password: null,
+      formIsValid: true,
+      mode: 'login',
+    };
+  },
+  methods: {
+    submitForm() {
+      this.formIsValid = true;
+      if (
+        this.email === '' ||
+        !this.email.includes('@') ||
+        this.password.length < 6
+      ) {
+        this.formIsValid = false;
+        return;
+      }
+      // send http
+    },
+    switchAuthMode() {},
+  },
+};
+</script>
 
 <style scoped>
 form {
