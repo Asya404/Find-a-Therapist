@@ -22,7 +22,6 @@ a {
   color: #1d191f;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  
   cursor: pointer;
   border-radius: 8px;
   margin-right: 0.5rem;
@@ -33,7 +32,7 @@ a {
 
 .fill {
   background-color: #fff86d;
-  border: none;
+  border: 1px solid #fff86d;
 }
 
 .outline {
