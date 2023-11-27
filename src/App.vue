@@ -41,6 +41,32 @@ h2 {
   margin-bottom: 15px;
 }
 
+input,
+textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #fff86d;
+}
+
+.form-control {
+  margin: 8px 0;
+}
+
+.form-control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
 .areas-options {
   display: flex;
   flex-wrap: wrap;
@@ -101,6 +127,12 @@ h2 {
 
 .areas-option input[type='checkbox']:checked::after {
   opacity: 1;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin: 5px 0 20px 0;
 }
 
 .route-anim-enter-from {

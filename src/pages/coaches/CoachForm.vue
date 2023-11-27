@@ -11,7 +11,7 @@
             v-model.trim="firstName.val"
             @blur="clearValidity('firstName')"
           />
-          <p class="message" v-if="!firstName.isValid">
+          <p class="error" v-if="!firstName.isValid">
             First Name must not be empty
           </p>
         </div>
@@ -23,7 +23,7 @@
             v-model.trim="lastName.val"
             @blur="clearValidity('lastName')"
           />
-          <p class="message" v-if="!lastName.isValid">
+          <p class="error" v-if="!lastName.isValid">
             Last Name must not be empty
           </p>
         </div>
@@ -35,7 +35,7 @@
             v-model.trim="description.val"
             @blur="clearValidity('description')"
           ></textarea>
-          <p class="message" v-if="!description.isValid">
+          <p class="error" v-if="!description.isValid">
             Description must not be empty
           </p>
         </div>
@@ -47,7 +47,7 @@
             v-model.number="rate.val"
             @blur="clearValidity('rate')"
           />
-          <p class="message" v-if="!rate.isValid">
+          <p class="error" v-if="!rate.isValid">
             Rate must be greater than 0
           </p>
         </div>
@@ -101,11 +101,11 @@
             </div>
           </div>
 
-          <p class="message" v-if="!areas.isValid">
+          <p class="error" v-if="!areas.isValid">
             At least one expertise must be selected
           </p>
         </div>
-        <p class="message" v-if="!formIsValid">Please fix the above errors</p>
+        <p class="error" v-if="!formIsValid">Please fix the above errors</p>
         <base-button mode="fill">Register</base-button>
       </form>
     </base-card>
@@ -208,39 +208,6 @@ export default {
 </script>
 
 <style>
-.form-control {
-  margin: 0.5rem 0;
-}
-
-.form-control label,
-h3 {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-input,
-textarea {
-  display: block;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  font: inherit;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-  border-color: #fff86d;
-}
-
-.message {
-  color: red;
-  font-size: 12px;
-  margin: 5px 0 20px 0;
-}
-
 .invalid input,
 .invalid textarea {
   border: 1px solid red;
