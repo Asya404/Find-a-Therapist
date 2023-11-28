@@ -13,9 +13,14 @@
         Please enter a valid e-mail and password (must be at least 6 characters
         long)
       </p>
-      <base-button mode="fill">Login</base-button>
-      <base-button type="button" mode="outline" @click="switchAuthMode"
-        >Signup instead</base-button
+      <base-button mode="fill" @click="switchAuthMode">{{
+        submitButtonCaption
+      }}</base-button>
+      <base-button
+        type="button"
+        mode="outline"
+        @click="switchAuthMode"
+        >{{ switchModeButtonCaption }}</base-button
       >
     </form>
   </base-card>
@@ -31,6 +36,22 @@ export default {
       mode: 'login',
     };
   },
+  computed: {
+    submitButtonCaption() {
+      if (this.mode === 'login') {
+        return 'Login';
+      } else {
+        return 'Signup';
+      }
+    },
+    switchModeButtonCaption() {
+      if (this.mode === 'login') {
+        return 'Signup instead';
+      } else {
+        return 'Login instead';
+      }
+    },
+  },
   methods: {
     submitForm() {
       this.formIsValid = true;
@@ -44,7 +65,13 @@ export default {
       }
       // send http
     },
-    switchAuthMode() {},
+    switchAuthMode() {
+      if (this.mode === 'login') {
+        this.mode = 'signup';
+      } else {
+        this.mode = 'login';
+      }
+    },
   },
 };
 </script>
