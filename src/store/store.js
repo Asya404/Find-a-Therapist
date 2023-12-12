@@ -9,12 +9,43 @@ const store = createStore({
   },
   state() {
     return {
-      userId: 'c3',
+      userId: null,
+      token: null,
+      tokenExpiration: null,
     };
   },
   getters: {
     userId(state) {
       return state.userId;
+    },
+  },
+  actions: {
+    login() {},
+    async signup(context, payload) {
+      const response = await fetch(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDcrCWW9qvBXrgNb9i9bpNzAHwXybr3Mdw',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            email: payload.email,
+            password: payload.password,
+            returnSecureToken: true,
+          }),
+        }
+      );
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message || 'Failed to authenticate');
+      }
+      console.log(responseData);
+      context.commit('setUser', responseData);
+    },
+  },
+  mutations: {
+    setUser(state, payload) {
+      state.token = payload.idToken;
+      state.userId = payload.localId;
+      state.tokenExpiration = payload.expiresIn;
     },
   },
 });
