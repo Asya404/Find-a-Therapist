@@ -20,7 +20,26 @@ const store = createStore({
     },
   },
   actions: {
-    login() {},
+    async login(context, payload) {
+      const response = await fetch(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDcrCWW9qvBXrgNb9i9bpNzAHwXybr3Mdw',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            email: payload.email,
+            password: payload.password,
+            returnSecureToken: true,
+          }),
+        }
+      );
+
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.error.message || 'Failed to authenticate');
+      }
+      console.log(responseData)
+      context.commit('setUser', responseData);
+    },
     async signup(context, payload) {
       const response = await fetch(
         'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDcrCWW9qvBXrgNb9i9bpNzAHwXybr3Mdw',
