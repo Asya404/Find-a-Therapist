@@ -18,6 +18,9 @@ const store = createStore({
     userId(state) {
       return state.userId;
     },
+    token(state) {
+      return state.token;
+    },
   },
   actions: {
     async login(context, payload) {
@@ -37,7 +40,7 @@ const store = createStore({
       if (!response.ok) {
         throw new Error(responseData.error.message || 'Failed to authenticate');
       }
-      console.log(responseData)
+      console.log(responseData);
       context.commit('setUser', responseData);
     },
     async signup(context, payload) {

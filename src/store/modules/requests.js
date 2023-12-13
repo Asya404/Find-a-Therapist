@@ -43,8 +43,11 @@ export default {
       context.commit('addRequest', newRequest);
     },
     async fetchRequest(context) {
+      const coachId = context.rootGetters.userId;
+      const token = context.rootGetters.token;
       const response = await fetch(
-        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/requests.json`
+        `https://find-a-doctor-vue-default-rtdb.europe-west1.firebasedatabase.app/requests/${coachId}.json?auth=` +
+          token
       );
       const responseData = await response.json();
 
@@ -58,11 +61,10 @@ export default {
       const requests = [];
 
       const coaches = context.rootGetters['coaches/getCoaches'];
-      
+
       for (const key in responseData) {
         const requestedCoach = coaches.find((coach) => coach.id === key);
-       
-        
+
         const request = {
           id: key,
           userEmail: responseData[key].userEmail,

@@ -12,7 +12,6 @@
         <ul v-else-if="hasRequests && !isLoading">
           <li v-for="request in receivedRequests" :key="request.id">
             <div>
-              <p class="request__name">to: {{ request.name }}</p>
               <a class="request__mail" href="mailto: request.email"
                 >from: {{ request.userEmail }}</a
               >
