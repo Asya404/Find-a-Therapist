@@ -35,9 +35,8 @@ const store = createStore({
       );
       const responseData = await response.json();
       if (!response.ok) {
-        throw new Error(responseData.message || 'Failed to authenticate');
+        throw new Error(responseData.error.message || 'Failed to authenticate');
       }
-      console.log(responseData);
       context.commit('setUser', responseData);
     },
   },
