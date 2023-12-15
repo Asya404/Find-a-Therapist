@@ -21,6 +21,9 @@ const store = createStore({
     token(state) {
       return state.token;
     },
+    isAuthenticated(state) {
+      return !!state.token;
+    },
   },
   actions: {
     async login(context, payload) {

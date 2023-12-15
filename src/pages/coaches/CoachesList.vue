@@ -22,7 +22,11 @@
       <base-card>
         <div class="controls">
           <base-button mode="outline" @click="loadCoaches">Refresh</base-button>
-          <base-button v-if="!isLoading" link="true" to="/register" mode="fill"
+          <base-button
+            v-if="!isLoading && isLoggedIn"
+            link="true"
+            to="/register"
+            mode="fill"
             >Register as Therapist</base-button
           >
         </div>
@@ -84,6 +88,7 @@ export default {
     ...mapGetters({
       hasCoaches: 'coaches/hasCoaches',
       isCoach: 'coaches/isCoach',
+      isLoggedIn: 'isAuthenticated',
     }),
   },
   created() {
