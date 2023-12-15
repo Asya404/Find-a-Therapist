@@ -64,6 +64,13 @@ const store = createStore({
       }
       context.commit('setUser', responseData);
     },
+    logout(context) {
+      context.commit('setUser', {
+        idToken: null,
+        localId: null,
+        expiresIn: null,
+      });
+    },
   },
   mutations: {
     setUser(state, payload) {

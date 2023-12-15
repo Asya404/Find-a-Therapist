@@ -24,10 +24,8 @@ a {
   padding: 0.75rem 1.5rem;
   cursor: pointer;
   border-radius: 8px;
-  margin-right: 0.5rem;
   display: inline-block;
-  font-weight: 700;
-  border: none;
+  font-size: 14px;
 }
 
 .fill {
@@ -40,9 +38,14 @@ a {
   border: 1px solid #1d191f;
 }
 
+.grey {
+  border: 1px solid #ccc;
+  background-color: #ccc;
+}
+
 .outline:hover,
 .outline:active {
   background-color: #fff86d;
-  border: 1px solid transparent;
+  border: 1px solid #fff86d;
 }
 </style>

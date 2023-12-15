@@ -14,7 +14,10 @@
           >
         </li>
         <li v-else>
-          <router-link to="/auth">Login</router-link>
+          <router-link class="header__link" to="/auth">Login</router-link>
+        </li>
+        <li v-if="isLoggedIn">
+          <base-button mode="grey" @click="logout">Logout</base-button>
         </li>
       </ul>
     </nav>
@@ -28,20 +31,20 @@ export default {
       return this.$store.getters.isAuthenticated;
     },
   },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+    },
+  },
 };
 </script>
 
 <style scoped>
 header {
-  width: 100%;
   height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-header img {
-  max-width: 80px;
 }
 
 header a {
@@ -57,7 +60,7 @@ header a {
 .header__link:hover,
 .header__link.router-link-active {
   background-color: #fff86d;
-  border: 1px solid transparent;
+  border: 1px solid #fff86d;
 }
 
 h1 a {
@@ -74,6 +77,10 @@ h1 a:hover,
 h1 a:active,
 h1 a.router-link-active {
   border-color: transparent;
+}
+
+header button {
+  font-weight: 400;
 }
 
 header nav {

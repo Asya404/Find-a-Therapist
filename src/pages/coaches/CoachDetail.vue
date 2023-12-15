@@ -5,10 +5,8 @@
         <div class="img-wrapper">
           <img class="coach__img" :src="selectedCoach.imageUrl" alt="" />
         </div>
-        <div class="wrapper">
-          <h2>{{ fullName }}</h2>
-          <h3>${{ rate }}/hour</h3>
-        </div>
+        <h2>{{ fullName }}</h2>
+        <h3>${{ rate }}/hour</h3>
         <base-badge
           v-for="area in areas"
           :key="area"
@@ -81,6 +79,6 @@ h2 {
 }
 
 .badge {
-  margin-bottom: 10px;
+  margin: 15px 0;
 }
 </style>

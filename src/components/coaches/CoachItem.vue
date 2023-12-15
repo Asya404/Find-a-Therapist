@@ -85,4 +85,8 @@ div {
   display: flex;
   justify-content: flex-end;
 }
+
+a:first-child {
+  margin-right: 0.5rem;
+}
 </style>

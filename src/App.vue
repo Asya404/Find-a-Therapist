@@ -129,6 +129,10 @@ textarea:focus {
   opacity: 1;
 }
 
+form button {
+  margin-right: 0.5rem;
+}
+
 .error {
   color: red;
   font-size: 12px;
