@@ -26,43 +26,42 @@ const store = createStore({
     },
   },
   actions: {
-    async login(context, payload) {
-      const response = await fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDcrCWW9qvBXrgNb9i9bpNzAHwXybr3Mdw',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: payload.email,
-            password: payload.password,
-            returnSecureToken: true,
-          }),
-        }
-      );
+    async auth(context, payload) {
+      const mode = payload.mode;
+      let url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDcrCWW9qvBXrgNb9i9bpNzAHwXybr3Mdw';
+
+      if (mode === 'signup') {
+        url =
+          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDcrCWW9qvBXrgNb9i9bpNzAHwXybr3Mdw';
+      }
+
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          email: payload.email,
+          password: payload.password,
+          returnSecureToken: true,
+        }),
+      });
 
       const responseData = await response.json();
       if (!response.ok) {
         throw new Error(responseData.error.message || 'Failed to authenticate');
       }
-      console.log(responseData);
       context.commit('setUser', responseData);
     },
+    async login(context, payload) {
+      return context.dispatch('auth', {
+        ...payload,
+        mode: 'login',
+      });
+    },
     async signup(context, payload) {
-      const response = await fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDcrCWW9qvBXrgNb9i9bpNzAHwXybr3Mdw',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            email: payload.email,
-            password: payload.password,
-            returnSecureToken: true,
-          }),
-        }
-      );
-      const responseData = await response.json();
-      if (!response.ok) {
-        throw new Error(responseData.error.message || 'Failed to authenticate');
-      }
-      context.commit('setUser', responseData);
+      return context.dispatch('auth', {
+        ...payload,
+        mode: 'signup',
+      });
     },
     logout(context) {
       context.commit('setUser', {

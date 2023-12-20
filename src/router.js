@@ -20,17 +20,17 @@ const router = createRouter({
       props: true,
       children: [{ path: 'contact', component: ContactCoach }],
     },
-    { path: '/register', component: CoachForm, meta: { requeresAuth: true } },
-    { path: '/requests', component: Requests, meta: { requeresAuth: true } },
-    { path: '/auth', component: UserAuth, meta: { requeresUnauth: true } },
+    { path: '/register', component: CoachForm, meta: { requiresAuth: true } },
+    { path: '/requests', component: Requests, meta: { requiresAuth: true } },
+    { path: '/auth', component: UserAuth, meta: { requiresUnauth: true } },
     { path: '/:notFound(.*)', component: NotFound },
   ],
 });
 
 router.beforeEach(function (to, _, next) {
-  if (to.meta.requeresAuth && !store.getters.isAuthenticated) {
+  if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
     next('/auth');
-  } else if (to.meta.requeresUnauth && store.getters.isAuthenticated) {
+  } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
     next('/coaches');
   } else {
     next();
