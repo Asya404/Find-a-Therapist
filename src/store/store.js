@@ -49,7 +49,21 @@ const store = createStore({
       if (!response.ok) {
         throw new Error(responseData.error.message || 'Failed to authenticate');
       }
+
+      localStorage.setItem('token', responseData.idToken);
+      localStorage.setItem('userId', responseData.localId);
+
       context.commit('setUser', responseData);
+    },
+    tryLogin(context) {
+      const token = localStorage.getItem('token');
+      const userId = localStorage.getItem('userId');
+
+      context.commit('setUser', {
+        idToken: token,
+        localId: userId,
+        expiresIn: null,
+      });
     },
     async login(context, payload) {
       return context.dispatch('auth', {
