@@ -11,7 +11,6 @@ const store = createStore({
     return {
       userId: null,
       token: null,
-      tokenExpiration: null,
     };
   },
   getters: {
@@ -62,7 +61,6 @@ const store = createStore({
       context.commit('setUser', {
         idToken: token,
         localId: userId,
-        expiresIn: null,
       });
     },
     async login(context, payload) {
@@ -78,10 +76,12 @@ const store = createStore({
       });
     },
     logout(context) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+
       context.commit('setUser', {
         idToken: null,
         localId: null,
-        expiresIn: null,
       });
     },
   },
@@ -89,7 +89,6 @@ const store = createStore({
     setUser(state, payload) {
       state.token = payload.idToken;
       state.userId = payload.localId;
-      state.tokenExpiration = payload.expiresIn;
     },
   },
 });
