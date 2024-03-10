@@ -22,6 +22,7 @@ export default {
   border-radius: 30px;
   padding: 0.5rem 1.5rem;
   display: inline-block;
+  margin-right: 5px;
 }
 
 .frontend {
