@@ -84,6 +84,7 @@ textarea:focus {
   color: #6d6d6d;
   font-size: 14px;
   text-transform: uppercase;
+  margin-top: 10px;
 }
 
 .areas-option label {
